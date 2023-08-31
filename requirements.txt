@@ -1,0 +1,10 @@
+flask
+Flask-Cors
+google-cloud-secret-manager
+google-cloud-storage
+gunicorn
+keras
+numpy
+pandas
+scikit-learn
+tensorflow
