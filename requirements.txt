@@ -40,7 +40,7 @@ numpy
 oauthlib==3.2.2
 opt-einsum==3.3.0
 packaging==23.1
-pandas==2.0.3
+pandas
 proto-plus==1.22.3
 protobuf==4.24.1
 pyasn1==0.5.0
