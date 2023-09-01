@@ -65,6 +65,4 @@ typing-extensions==4.5.0
 tzdata==2023.3
 urllib3==1.26.16
 waitress==2.1.2
-werkzeug
 wrapt==1.14.1
-zipp==3.16.2
