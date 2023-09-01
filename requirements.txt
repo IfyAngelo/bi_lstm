@@ -67,4 +67,4 @@ urllib3==1.26.16
 waitress==2.1.2
 werkzeug
 wrapt==1.14.1
-zipp==3.16.2
+zipp
