@@ -24,7 +24,7 @@ grpc-google-iam-v1==0.12.6
 grpcio==1.57.0
 grpcio-status==1.57.0
 gunicorn==21.2.0
-h5py==3.9.0
+h5py
 idna==3.4
 importlib-metadata==6.8.0
 itsdangerous==2.1.2
