@@ -1,0 +1,11 @@
+env:
+  - name: GOOGLE_APPLICATION_CREDENTIALS
+    from_secret: gcp-credentials
+    build_command: pip install -r requirements.txt
+    start_command: python app.py  # This specifies how to start your Flask app
+  - name: PORT
+    value: 8080
+  - name: BUCKET_NAME
+    value: bi_lstm_model  # Replace with your GCS bucket name
+  - name: MODEL_BLOB_NAME
+    value: model.h5  # Replace with the path within the bucket where the model is located

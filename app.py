@@ -4,7 +4,8 @@ from flask_cors import CORS
 from tensorflow.keras.models import load_model
 from preprocess import preprocess_data
 import pandas as pd
-from google.cloud import storage, secretmanager
+from google.cloud import storage
+import os
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for the web app
@@ -12,23 +13,12 @@ CORS(app)  # Enable CORS for the web app
 # Initialize the storage client
 client = storage.Client()
 
-# Initialize the Secret Manager client
-secret_client = secretmanager.SecretManagerServiceClient()
-
-# Replace 'your-bucket-name' with the name of your GCS bucket
-bucket_name = 'bi_lstm_model'
-model_blob_name = 'model.h5'  # Path within the bucket where the model is located
+# Get the bucket name and model blob name from environment variables
+bucket_name = os.environ.get('BUCKET_NAME')
+model_blob_name = os.environ.get('MODEL_BLOB_NAME')
 
 # Get the bucket
 bucket = client.bucket(bucket_name)
-
-def get_secret(secret_name):
-    # Retrieve the secret value from Secret Manager
-    response = secret_client.access_secret_version(request={"name": secret_name})
-    return response.payload.data.decode("UTF-8")
-
-# Retrieve secrets from Secret Manager
-api_key_secret = get_secret("projects/bilstm-397009/secrets/bi_lstm_secret/versions/latest")
 
 def load_cached_model():
     global loaded_model
@@ -92,4 +82,4 @@ def predict():
     return jsonify(result_dict)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)), debug=True)
