@@ -9,6 +9,5 @@ env:
     value: bi_lstm_model  # Replace with your GCS bucket name
   - name: MODEL_BLOB_NAME
     value: model.h5  # Replace with the path within the bucket where the model is located
-build:
-  - name: bi_lstm_api
-    env: python=3.8.5
+  - name: PYTHON_VERSION
+    value: 3.8.5
